@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            font-size: 1rem;
+            text-align: center;
+        }
+        .center{
+            position: absolute;
+            top:50%;
+            left: 50%;
+            transform: translate(-50% , -50%)
+        }
+    </style>
+
+    <script>
+        const QUOTEBANK = [
+        {
+            quote: "Do the difficult things while they are easy and do the great things while they are small. A journey of a thousand miles must begin with a single step..",
+            author: "Laozi"
+        },
+        {
+            quote:  "Without hard work, nothing grows but weeds..",
+            author: "Gordon Hinckley"
+        },
+        {
+            quote: "If you don't design your own life plan, chances are you'll fall into someone else's plan. And guess what they have planned for you? Not much..",
+            author: "Jim Rohn"
+        }
+    ]
+
+        window.onload=init;
+        function init(){
+            console.log('init loaded')
+            newQuote();
+        }
+        
+        function newQuote(){
+            const ran = Math.floor(Math.random()*(QUOTEBANK.length));
+            document.getElementById('text').innerText=QUOTEBANK[ran].quote
+            document.getElementById('author').innerText=QUOTEBANK[ran].author
+            console.log('new quote');
+        }
+    </script>
+
+</head>
+<body>
+    <wrapper class="center" id="quote-box">
+        <div id="text"></div>
+        <div id="author"></div>
+        <button id="new-quote" onClick="newQuote();">New Quote</button>
+        <a id="tweet-quote" href="twitter.com/intent/tweet"></a>
+
+
+    </wrapper>
+    <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+</body>
+</html>
