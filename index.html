@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <title>My Random Quote Machine</title>
     <style>
         *{
             font-size: 1rem;
@@ -33,6 +35,8 @@
             author: "Jim Rohn"
         }
     ]
+        
+
 
         window.onload=init;
         function init(){
@@ -42,22 +46,49 @@
         
         function newQuote(){
             const ran = Math.floor(Math.random()*(QUOTEBANK.length));
+
+            let tweetlink = 'https://twitter.com/intent/tweet?hashtags=quotes&related=freecodecamp&text='
+
+            let quote = "%22" + QUOTEBANK[ran].quote.replace(/ /g, "%20") + "%22"
+
+            tweetlink += quote; 
+
+            let author = '%20' + QUOTEBANK[ran].author.replace(/ /g, "%20")
+
+            tweetlink += author;
+
+            document.getElementById('tweet-quote').href = tweetlink;
+
             document.getElementById('text').innerText=QUOTEBANK[ran].quote
+
             document.getElementById('author').innerText=QUOTEBANK[ran].author
             console.log('new quote');
+
+
         }
     </script>
 
 </head>
 <body>
-    <wrapper class="center" id="quote-box">
-        <div id="text"></div>
-        <div id="author"></div>
-        <button id="new-quote" onClick="newQuote();">New Quote</button>
-        <a id="tweet-quote" href="twitter.com/intent/tweet"></a>
+    <div id="wrapper">
+        <div class="center" id="quote-box">
+            <div id="text"></div>
+            <div id="author"></div>
+            <button id="new-quote" onClick="newQuote();">New Quote</button>
+            <a class="button" id="tweet-quote" title="Tweet this quote!" target="_blank"  style="background-color: rgb(243, 156, 18);">
+                <i class="fa fa-twitter"></i>
+              </a>
 
+            <!-- <a class="button" id="tweet-quote" title="Tweet this quote!" target="_blank" href="https://twitter.com/intent/tweet?hashtags=quotes&amp;related=freecodecamp&amp;text=%22Eighty%20percent%20of%20success%20is%20showing%20up.%22%20Woody%20Allen" style="background-color: rgb(243, 156, 18);">
+                <i class="fa fa-twitter"></i>
+              </a> -->
+    
 
-    </wrapper>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
     <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
 </body>
 </html>
+
