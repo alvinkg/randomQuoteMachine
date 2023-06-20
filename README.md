@@ -1,4 +1,4 @@
-# A Random Quote Generator for freeCodeCamp
+# [A Random Quote Generator for freeCodeCamp](
 
 Placeholder for me to write about this project.
 Build a Random Quote Machine - Front End Libraries Projects - Free Code Camp by Useful Programmer
